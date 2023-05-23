@@ -1,0 +1,32 @@
+#
+# The Percona Server 8.0 configuration file.
+#
+# For explanations see
+# http://dev.mysql.com/doc/mysql/en/server-system-variables.html
+
+[mysqld]
+pid-file	= /var/run/mysqld/mysqld.pid
+socket		= /var/run/mysqld/mysqld.sock
+datadir		= /var/lib/mysql
+log-error	= /var/log/mysql/error.log
+
+skip_slave_start
+server-id                       = 30
+gtid_mode                       = on
+enforce_gtid_consistency        = on
+auto_increment_increment        = 1
+auto_increment_offset           = 1
+
+relay-log                       = /var/lib/mysql/relay-bin
+relay-log-index                 = /var/lib/mysql/relay-bin.index
+log-bin                         = /var/lib/mysql/log-bin
+log-bin-index                   = /var/lib/mysql/log-bin.index
+binlog_expire_logs_seconds      = 345600
+binlog_format                   = ROW
+binlog_row_image                = minimal
+binlog_rows_query_log_events    = true
+binlog_row_value_options        = PARTIAL_JSON
+sync-binlog                     = 2
+
+read_only                       = 0
+super_read_only                 = 0
